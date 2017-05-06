@@ -1,0 +1,29 @@
+<ion-view view-title="Application For Compensation / Paypal">
+	<ion-content>
+		<div class="row">			
+			<div class="col col-100">						
+				<form name="amountRedeemForm" ng-submit="submitamountRedeemForm(amountRedeemForm);" novalidate>				
+					<div class="list list-custom">	
+						<label class="item item-custom item-input item-floating-label">
+							<span class="input-label">Points</span>
+							<input type="tel" placeholder="Points" name="points" ng-model="comData.points" ng-pattern="/^[0-9]{1,15}$/" required>
+						</label>
+						<p class="error-p" ng-show="amountRedeemForm.points.$error.required && (!amountRedeemForm.points.$pristine || amountRedeemForm.$submitted)">This Field Is Required</p>
+						<p class="error-p" ng-show="amountRedeemForm.points.$error.pattern && (!amountRedeemForm.points.$pristine || amountRedeemForm.$submitted) && !amountRedeemForm.points.$error.minlength">Points Are Invalid</p>
+						<label class="item item-custom item-input item-floating-label">
+							<span class="input-label">ID</span>
+							<input type="email" placeholder="Email ID" name="type_id" ng-model="comData.type_id" required>
+						</label>
+						<p class="error-p" ng-show="amountRedeemForm.type_id.$error.required && (!amountRedeemForm.type_id.$pristine || amountRedeemForm.$submitted)">This Field Is Required</p>
+						<p class="error-p" ng-show="amountRedeemForm.type_id.$invalid && (!amountRedeemForm.type_id.$pristine || amountRedeemForm.$submitted) && !amountRedeemForm.type_id.$error.required">Email Is Not Valid</p>
+					</div>								
+					<button class="button button-custom button-block">Send Request</button>
+				</form>					
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:30px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

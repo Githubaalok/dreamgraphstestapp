@@ -1,0 +1,54 @@
+<ion-view view-title="Challenges Bank / Challenge">
+    <ion-content>
+        <div class="shadow-custom">
+          <img ng-if="challengeDetails.image" src="{{ challengeDetails.image }}" style="width:100%" alt="challengeImg">
+		  <div class="ion-dom">
+			<p ng-if="challengeDetails.title" class="challenge_heading text-center">{{ challengeDetails.title }}</p>
+			<p ng-if="challengeDetails.points" class="challenge_title text-center">Points : {{ challengeDetails.points }}</p>
+		  </div>
+		</div>
+		<p class="text-white text-center" style="margin:10px 0px 0px 0px;">Each Point Equals 1 USD As An Incentive</p>
+		<div class="row">
+          <div class="col col-50 text-center">
+          	<a class="button button-custom button-block" style="padding:0px;margin:0px;" ui-sref="app.challenge~accept-this-challenge({ challenge_id:challengeDetails.challenge_id })">
+              	Challenge Yourself
+            </a>
+		  </div>
+		  <div class="col col-50 text-center">
+          	<a class="button button-custom button-block" style="padding:0px;margin:0px;" ui-sref="app.challenge~giving-a-challenge({ challenge_id:challengeDetails.challenge_id })">
+              	Challenge A Friend
+            </a>
+		  </div>
+       	</div>
+		<div class="list list-custom">
+		  <a class="item" ng-if="challengeDetails.level">
+			<span class="datatitle">Level</span> <span class="datavalue">{{ challengeDetails.level }}</span>
+		  </a>
+		  <a class="item" ng-if="challengeDetails.dimension_name">
+			<span class="datatitle">Dimension</span> <span class="datavalue">{{ challengeDetails.dimension_name }}</span>
+		  </a>
+		  <a class="item" ng-if="challengeDetails.category_name">
+			<span class="datatitle">Category</span> <span class="datavalue">{{ challengeDetails.category_name }}</span>
+		  </a>
+		  <a class="item" ng-if="challengeDetails.benefits1">
+			<span class="datatitle">Benefit 1 </span> <span class="datavalue">{{ challengeDetails.benefits1 }}</span>
+		  </a>
+		  <a class="item" ng-if="challengeDetails.benefits2">
+			<span class="datatitle">Benefit 2</span> <span class="datavalue">{{ challengeDetails.benefits2 }}</span>
+		  </a>
+		  <a class="item" ng-if="challengeDetails.benefits3">
+			<span class="datatitle">Benefit 3</span> <span class="datavalue">{{ challengeDetails.benefits3 }}</span>
+		  </a>
+		  <a class="item" ng-if="challengeDetails.description">
+			<span class="datatitle">Description</span> <span class="datavalue" style="text-align: left;white-space: normal;width: 100%;margin-top: 5px;" ng-bind-html="challengeDetails.description"></span>
+		  </a>
+		  <a class="item" ng-if="challengeDetails.instruction">
+			<span class="datatitle">Instruction</span> <span class="datavalue">{{ challengeDetails.instruction }}</span>
+		  </a>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:10px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>	
+</ion-view>

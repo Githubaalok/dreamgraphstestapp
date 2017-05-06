@@ -1,0 +1,34 @@
+﻿<ion-view view-title="Challenges Friends / Without Accepted / Details">
+    <ion-content>
+        <div class="shadow-custom">
+          <img ng-if="notaccepteddetails.image" src="{{ notaccepteddetails.image }}" style="width:100%" alt="challengeImg">
+		  <div class="ion-dom">
+			<p ng-if="notaccepteddetails.challenge_title" class="challenge_heading text-center">{{ notaccepteddetails.challenge_title }}</p>
+		  </div>
+		</div>
+		<div class="list list-custom">
+		  <a class="item" ng-if="notaccepteddetails.name">
+			<span class="datatitle">Name</span> <span class="datavalue">{{ notaccepteddetails.name }}</span>
+		  </a>
+		  <a class="item" ng-if="notaccepteddetails.start_date">
+			<span class="datatitle">Start Date</span> <span class="datavalue">{{ notaccepteddetails.start_date }}</span>
+		  </a>
+		  <a class="item" ng-if="notaccepteddetails.end_date">
+			<span class="datatitle">End Date</span> <span class="datavalue">{{ notaccepteddetails.end_date }}</span>
+		  </a>
+		  <a class="item">
+			<span class="datatitle">Status</span> <span class="datavalue">Not Accepted</span>
+		  </a>
+		  <a class="item" ng-if="notaccepteddetails.intPuntos">
+			<span class="datatitle">Points</span> <span class="datavalue">{{ notaccepteddetails.intPuntos }}</span>
+		  </a>
+		  <a class="item" ng-if="notaccepteddetails.full_description">
+			<span class="datatitle">Description</span> <span class="datavalue" style="text-align: left;white-space: normal;width: 100%;margin-top: 5px;" ng-bind-html="notaccepteddetails.full_description"></span>
+		  </a>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:10px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>	
+</ion-view>

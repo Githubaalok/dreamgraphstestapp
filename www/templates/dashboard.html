@@ -1,0 +1,95 @@
+<ion-view view-title="अ. भा. जैन ओसवाल साजनान फेडरेशन ( रजि. )">
+	<div class="bar bar-subheader bar-secondary">
+      <h2 class="title secondary">होम</h2>
+    </div>
+	<ion-content>
+    	<ion-slide-box on-slide-changed="OnSlideChanged(index)" auto-play="true" does-continue="true" show-pager="false">
+          <ion-slide ng-repeat="data in slider" style="margin-top:43px;" >
+				<div>
+					<img src="{{data.slider_images}}" alt="sliderimg">
+					<p class="slide-caption">{{data.slide_info}}</p>
+				</div>
+          </ion-slide>
+      </ion-slide-box>
+        <div class="row">
+        	<div class="col col-100 text-center">
+            	<h3>राष्ट्रीय पदाधिकारी व कार्यकारिणी</h3>
+            </div>
+        </div>
+		<div ng-repeat="data in officers">
+			<div class="row" ng-if="$even">
+				<div ng-if="officers[$index].officer_name" class="col col-50 text-center">
+					<a ui-sref="app.sandesh({slug:officers[$index].slug})"><img src="{{ officers[$index].image_url }}" alt="sliderimg" style="height:140px;width:100%;"></a>
+					<a ui-sref="app.sandesh({slug:officers[$index].slug})">{{ officers[$index].officer_name }}</a>
+					<p style="font-size:10px;">{{ officers[$index].designation }}</p>
+				</div>
+				<div ng-if="officers[$index + 1].officer_name"  class="col col-50 text-center">
+					<a ui-sref="app.sandesh({slug:officers[$index + 1].slug})"><img src="{{  officers[$index + 1].image_url }}" alt="sliderimg" style="height:140px;width:100%;"></a>
+					<a ui-sref="app.sandesh({slug:officers[$index + 1].slug})">{{ officers[$index + 1].officer_name }}</a>
+					<p style="font-size:10px;">{{ officers[$index + 1].designation }}</p>
+				</div>
+			</div>
+		</div>
+        <!-- विशेष  -->
+        <div class="row">
+        	<div class="col col-100 text-center">
+            	<h3>विशेष</h3>
+            </div>
+        </div>
+        <div class="row" ng-repeat="data in special">
+          <div class="col col-100 text-center">
+            <div class="icon-box-high">
+                <img src="{{ data.image_url }}" style=" height:60px; width:60px;">
+                <h2 style="margin-top:0px;">{{ data.title }}</h2>
+            	<p style="font-size:11px;">{{ data.short_deas }}</p>
+                <a href="#/app/business_directory" ng-if="data.slug == 'business-form'"><button class="button button-outline button-positive button-block">{{ data.title }}</button></a>
+				<a ng-if="data.slug == 'matrimonial'" ng-click="GotoMetrimonial();"><button class="button button-outline button-positive button-block">{{ data.title }}</button></a>
+				<a href="#" ng-click="GotoLink('http://makerites.com/wordpress/jainoswalsajnanfedration/wp-content/uploads/2016/11/003.jpg')" ng-if="data.slug == '003.jpg'"><button class="button button-outline button-positive button-block">{{ data.title }}</button></a>
+				<a href="#/app/jain-thirth-yatra" ng-if="data.slug == 'एकल खिड़की'"><button class="button button-outline button-positive button-block">{{ data.title }}</button></a>
+                <a href="" ng-if="data.slug != 'business-form' && data.slug != '003.jpg' && data.slug != 'एकल खिड़की' && data.slug != 'matrimonial' "><button class="button button-outline button-positive button-block">{{ data.title }}</button></a>
+            </div>
+          </div>
+         </div>
+        <!--/ विशेष  -->
+        <div class="row">
+            <div class="col col-100" style="background-color: #f2ef9b;padding: 5px;border:2px solid #800000">
+                <div class="row">
+                    <div class="col col-50">
+                        <p style="font-size:8px;">{{ sajnan_times.code }}</p>
+                    </div>
+                    <div class="col col-50">
+                        <p style="font-size:8px;">{{ sajnan_times.postal_code }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-25">
+                        <img src="http://jainoswalfederation.com/wp-content/uploads/2016/11/Oswal-Jain-sajnan-jos-logjo-2.png" alt="logo" style="height:60px;width:100%;">
+                    </div>
+                    <div class="col col-75">
+                        <h3>{{ sajnan_times.heading }}</h3>
+                        <p style="font-size:10px;">{{ sajnan_times.tag_line }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-100">
+                        <a href="#" ng-click="GotoLink(sajnan_times.pdf_url);"><button class="button button-outline button-small button-assertive button-block">{{ sajnan_times.pdf_title }}</button></a>
+                    </div>
+                </div>
+            </div>
+         </div>
+         <ion-slide-box on-slide-changed="slideChanged(index)" auto-play="true" does-continue="true" show-pager="false">
+          <ion-slide ng-repeat="data in testimonials">
+            <div class="row">
+                <div class="col col-100 text-center">
+                	<i class="ion ion-quote" ></i>
+                    <p  style="font-size:11px;">{{ data.testimonial }}</p>
+                </div>
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+        <!--<div class="row">
+            <div class="col col-100 " >
+            </div>
+        </div>-->
+    </ion-content>
+</ion-view>

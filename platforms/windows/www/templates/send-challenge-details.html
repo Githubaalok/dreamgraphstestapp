@@ -1,0 +1,44 @@
+﻿<ion-view view-title="Send Challenge Details">
+    <ion-content>
+        <div class="shadow-custom">
+          <img ng-if="" src="{{ sendChallengeDetails.image }}" style="width:100%" alt="challengeImg">
+		  <div class="ion-dom">
+			<p ng-if="" class="challenge_heading text-center">{{ sendChallengeDetails.challange_name }}</p>
+		  </div>
+		</div>
+		<div class="list list-custom">
+		  <a class="item" ng-if="sendChallengeDetails.name">
+			<span class="datatitle">Name</span> <span class="datavalue">{{ sendChallengeDetails.name }}</span>
+		  </a>
+		  <a class="item" ng-if="sendChallengeDetails.start_date">
+			<span class="datatitle">Start Date </span> <span class="datavalue">{{ sendChallengeDetails.start_date }}</span>
+		  </a>
+		  <a class="item" ng-if="sendChallengeDetails.end_date">
+			<span class="datatitle">End Date</span> <span class="datavalue">{{ sendChallengeDetails.end_date }}</span>
+		  </a>
+		  <a class="item" ng-if="sendChallengeDetails.challage_status">
+			<span class="datatitle">Status</span> <span class="datavalue">{{ sendChallengeDetails.challage_status }}</span>
+		  </a>
+		  <a class="item" ng-if="sendChallengeDetails.challage_points">
+			<span class="datatitle">Points</span> <span class="datavalue">{{ sendChallengeDetails.challage_points }}</span>
+		  </a>
+		  <a class="item" ng-if="sendChallengeDetails.cat_name">
+			<span class="datatitle">Category</span> <span class="datavalue">{{ sendChallengeDetails.cat_name }}</span>
+		  </a>
+		  <a class="item" ng-if="sendChallengeDetails.full_description">
+			<span class="datatitle">Description</span> <span class="datavalue" style="text-align: left;white-space: normal;width: 100%;margin-top: 5px;" ng-bind-html="sendChallengeDetails.full_description"></span>
+		  </a>
+		</div>
+		<div class="row">
+			<div class="col col-50 col-offset-25 text-center" style="margin-bottom:30px;">
+				<a ng-click="deleteSendChallenge(sendChallengeDetails.id);" class="button button-custom button-block">
+					Delete
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:30px;">	</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

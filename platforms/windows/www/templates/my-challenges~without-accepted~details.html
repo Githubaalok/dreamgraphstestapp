@@ -1,0 +1,55 @@
+﻿<ion-view view-title="My Challenges / Received / Details">
+    <ion-content>
+        <div class="shadow-custom">
+          <img ng-if="recdChallengeDetails.image" src="{{ recdChallengeDetails.image }}" style="width:100%" alt="challengeImg">
+		  <div class="ion-dom">
+			<p class="challenge_heading text-center" ng-if="recdChallengeDetails.title">{{ recdChallengeDetails.title }}</p>
+		  </div>
+		</div>
+		<div class="list list-custom">
+		  <a class="item" ng-if="recdChallengeDetails.start_date">
+			<span class="datatitle">Start Date</span> <span class="datavalue">{{ recdChallengeDetails.start_date }}</span>
+		  </a>
+		  <a class="item" ng-if="recdChallengeDetails.end_date">
+			<span class="datatitle">End Date</span> <span class="datavalue">{{ recdChallengeDetails.end_date }}</span>
+		  </a>
+		  <a class="item" ng-if="recdChallengeDetails.sender_name">
+			<span class="datatitle">Sent By </span> <span class="datavalue">{{ recdChallengeDetails.sender_name }}</span>
+		  </a>
+		  <a class="item" ng-if="recdChallengeDetails.cat_name">
+			<span class="datatitle">Category</span> <span class="datavalue">{{ recdChallengeDetails.cat_name }}</span>
+		  </a>
+		  <a class="item" ng-if="recdChallengeDetails.points">
+			<span class="datatitle">Points</span> <span class="datavalue">{{ recdChallengeDetails.points }}</span>
+		  </a>
+		  <a class="item" ng-if="recdChallengeDetails.benefit1">
+			<span class="datatitle">Benefit 1 </span> <span class="datavalue">{{ recdChallengeDetails.benefit1 }}</span>
+		  </a>
+		  <a class="item" ng-if="recdChallengeDetails.benefit2">
+			<span class="datatitle">Benefit 2 </span> <span class="datavalue">{{ recdChallengeDetails.benefit2 }}</span>
+		  </a>
+		  <a class="item" ng-if="recdChallengeDetails.benefit3">
+			<span class="datatitle">Benefit 3 </span> <span class="datavalue">{{ recdChallengeDetails.benefit3 }}</span>
+		  </a>
+		  <a class="item" ng-if="recdChallengeDetails.description">
+			<span class="datatitle">Description</span> <span class="datavalue" style="text-align: left;white-space: normal;width: 100%;margin-top: 5px;" ng-bind-html="recdChallengeDetails.description"></span>
+		  </a>
+		</div>
+		<div class="row">
+		  <div class="col col-50 text-center">
+			<button ng-click="cancelRecdChallenge(recdChallengeDetails.id,recdChallengeDetails.challenge_id)" class="button button-custom button-block" style="padding:0px;margin:0px;">
+				Cancel
+			</button>
+		  </div>
+		  <div class="col col-50 text-center">
+			<button ng-click="acceptRecdChallenge(recdChallengeDetails.id,recdChallengeDetails.challenge_id,recdChallengeDetails.start_date,recdChallengeDetails.end_date,recdChallengeDetails.challenges_send_by)" class="button button-custom button-block" style="padding:0px;margin:0px;">
+				Accept
+			</button>
+		  </div>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:50px;">	</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>	
+</ion-view>

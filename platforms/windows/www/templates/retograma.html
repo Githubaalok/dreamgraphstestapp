@@ -1,0 +1,60 @@
+﻿<ion-view view-title="Retograma">
+	<ion-content>
+		<div class="shadow-custom">
+          <img ng-if="challengeDetails.image" src="{{ challengeDetails.image }}" style="width:100%" alt="challengeImg">
+		  <div class="ion-dom">
+			<p class="challenge_heading text-center">{{ challengeDetails.challenge_name }}</p>
+			<div class="retodates">
+				<p>Start Date : {{ challengeDetails.start_date }}</p>
+				<p>End Date : {{ challengeDetails.end_date }}</p>
+			</div>
+			<p class="challenge_title text-center">Points : {{ challengeDetails.points }}</p>
+			<div class="retopercent">
+				<div class="c100 p{{ challengeDetails.challage_progress }} very-small green">
+				 <span>{{ challengeDetails.challage_progress }}%</span>                    
+				 <div class="slice">
+					<div class="bar"></div>
+					<div class="fill"></div>
+				 </div>
+				</div>
+			</div>
+		  </div>
+		</div>
+		<div class="list list-inner">
+		  <a class="item item-icon-left item-icon-right" ui-sref="app.retograma~benefits({ record_id:retoID })">
+			<i class="icon ion-ios-flower i-a i-setting"></i>
+			Benefit
+			<i class="icon icon-list ion-chevron-right"></i>
+		  </a>
+		  <a class="item item-icon-left item-icon-right" ui-sref="app.retograma~bitacora-challenge({ record_id:retoID })">
+			<i class="icon ion-ios-compose i-d i-setting"></i>
+			Bitacora challenge
+			<i class="icon icon-list ion-chevron-right"></i>
+		  </a>
+		  <a class="item item-icon-left item-icon-right" ui-sref="app.retograma~progress({ record_id:retoID })">
+			<i class="icon ion-arrow-graph-up-right i-c i-setting"></i>
+			My Progress
+			<i class="icon icon-list ion-chevron-right"></i>
+		  </a>
+		  <a class="item item-icon-left item-icon-right" ui-sref="app.retograma~instructions({ record_id:retoID })">
+			<i class="icon ion-information i-e i-setting"></i>
+			Instructions
+			<i class="icon icon-list ion-chevron-right"></i>
+		  </a>
+		  <a class="item item-icon-left item-icon-right"  ui-sref="app.retograma~motivate({ record_id:retoID })">
+			<i class="icon ion-android-walk i-f i-setting"></i>
+			Motivate
+			<i class="icon icon-list ion-chevron-right"></i>
+		  </a>
+		  <a class="item item-icon-left item-icon-right"  ui-sref="app.retograma~daily-entry({ record_id:retoID })">
+			<i class="icon ion-nuclear i-g i-setting"></i>
+			Daily Entry
+			<i class="icon icon-list ion-chevron-right"></i>
+		  </a>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:10px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

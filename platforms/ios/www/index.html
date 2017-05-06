@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/circle.css" rel="stylesheet">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">-->
+ 	<!-- ionic/angularjs js -->
+	<script src="lib/ionic/js/ionic.bundle.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+	<script src="js/country-state.js"></script>
+	<script src="lib/ngCordova/dist/ng-cordova.js"></script>
+	<link href="lib/datepicker-for-ionic/dist/style.css" rel="stylesheet"> 
+	<!-- path to ionic/angularjs js -->
+	<script src="lib/datepicker-for-ionic/dist/jquery.min.js"></script>
+	<script src="lib/datepicker-for-ionic/dist/templates.min.js"></script>
+	<script src="lib/datepicker-for-ionic/dist/ionic-datepicker.min.js"></script>
+	<script src="cordova.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB16sGmIekuGIvYOfNoW9T44377IU2d2Es&sensor=true"></script>
+  </head>
+
+ <body ng-app="starter" class="platform-ios platform-cordova platform-webview">
+    <ion-nav-view></ion-nav-view>
+	<!-- Friends List -->
+	<script id="friends-list.html" type="text/ng-template">
+	  <ion-view title="Friends" hide-back-button="true">
+		<div class="bar bar-header bar-light">
+          <h1 class="title">Friends</h1>
+		</div>
+		<ion-tabs class="tabs-top custom-nav-top">
+		  <ion-tab title="Friends" class = "text-white tabb" href="#/app/friends-list" ></ion-tab>
+		  <ion-tab title="All" class="text-white tabb" href="#/app/users-list"></ion-tab>
+		</ion-tabs>
+		<!-- search bar code -->
+		<div class="bar bar-subheader item-input-inset search-bar-friendlist" no-tap-scroll="true">
+		  <label class="item-input-wrapper">
+			<i class="icon ion-ios-search placeholder-icon"></i>
+			<input type="search" placeholder="Search" ng-model="searchfrnd.$" ng-change="scrollTop();">
+		  </label>
+		  <button class="button button-clear button-refresh ion-ios-refresh-empty" style="font-size:20px !important;" ng-click="searchfrnd = ''"> </button>
+		</div>
+		<ion-nav-buttons side="left">
+		  <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+		</ion-nav-buttons>
+		<ion-nav-buttons side="right">
+		  <button menu-toggle="right" class="button button-icon icon ion-android-more-vertical"></button>
+		</ion-nav-buttons>
+		<ion-content has-header="true" padding="true">
+		  <div class="list list-custom list-followers" style="margin-top:55px;">
+			<div class="item item-avatar" href="" ng-repeat="friend in friends | filter:searchfrnd" ng-if="friends">
+			  <img ng-if="friend.image" src="{{ friend.image }}">
+			  <h2 class="text-white"><a style="color:white;" ui-sref="app.member-profile({user_id:friend.user_id})">{{ friend.fullname }}</a></h2>
+			  <p><i class="ion-ios-location"></i> {{ friend.city }}  {{ friend.country }}</p>
+			  <a href="" ng-click="unfriendUser(friend.user_id);" class="button button-small ion-minus button-unfollow button-custom"></a>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:10px;">
+				<p><i ng-if="!friends[0]" class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="!friends[0]" class="text-primary">No Results Found</h4>
+			</div>
+		  </div>
+		</ion-content>
+		<div ng-include src="'templates/bottom-tabs.html'"></div>
+	  </ion-view>
+	</script>
+	<!--/ Friends List End -->
+	<!-- Users List -->
+	<script id="users-list.html" type="text/ng-template">
+	  <ion-view title="All" hide-back-button="true">
+		<div class="bar bar-header bar-light">
+          <h1 class="title">All</h1>
+		</div>
+		<ion-tabs class="tabs-top custom-nav-top">
+		  <ion-tab title="Friends" class = "text-white tabb" href="#/app/friends-list" ></ion-tab>
+		  <ion-tab title="All" class="text-white tabb" href="#/app/users-list"></ion-tab>
+		</ion-tabs>
+		<!-- search bar code -->
+		<div class="bar bar-subheader item-input-inset search-bar-friendlist" no-tap-scroll="true">
+		  <label class="item-input-wrapper">
+			<i class="icon ion-ios-search placeholder-icon"></i>
+			<input type="search" placeholder="Search" ng-model="searchuser.$" ng-change="scrollTop();">
+		  </label>
+		  <button class="button button-clear button-refresh ion-ios-refresh-empty" style="font-size:20px !important;" ng-click="searchuser = ''"> </button>
+		</div>
+		<ion-nav-buttons side="left">
+		  <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+		</ion-nav-buttons>
+		<ion-nav-buttons side="right">
+		  <button menu-toggle="right" class="button button-icon icon ion-android-more-vertical"></button>
+		</ion-nav-buttons>
+		<ion-content has-header="true" padding="true">
+		  <div class="list list-custom list-followers" style="margin-top:55px;">
+			<div class="item item-avatar" href="" ng-repeat="user in users | filter:searchuser" ng-if="users">
+			  <img ng-if="user.image" src="{{ user.image }}">
+			  <h2 class="text-white"><a style="color:white;" ui-sref="app.member-profile({user_id:user.user_id})">{{ user.fullname }}</a></h2>
+			  <p ng-if="user.city || user.country" ><i class="ion-ios-location"></i> {{ user.city }}  {{ user.country }}</p>
+			  <a href="" ng-click="sendFriendRequest(user.user_id,user);" ng-if="user.friend == 'no'" class="button button-small button-unfollow button-custom">
+				<i class="ion-plus-round text-primary" ng-if="user.send_request == 'no'"></i>
+				<i class="ion-close-round text-magenta" ng-if="user.send_request == 'yes'"></i>
+			  </a>
+			  <a href="" ng-if="user.friend == 'yes'" ng-disabled="true" class="button button-small ion-checkmark-round button-unfollow button-custom text-magenta"></a>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="col col-100 text-center">
+				<p><i ng-if="!users[0]" class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="!users[0]" class="text-primary">No Results Found</h4>
+			</div>
+		  </div>
+		</ion-content>
+		<div ng-include src="'templates/bottom-tabs.html'"></div>
+	  </ion-view>
+	</script>
+	<!--/ Users List End -->
+ </body>
+</html>

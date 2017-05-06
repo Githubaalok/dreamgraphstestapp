@@ -1,0 +1,78 @@
+<ion-view view-title="Challenge / Giving A Challenge">
+	<ion-content>
+		<div class="shadow-custom">
+          <img ng-if="challengeDetails.image" src="{{ challengeDetails.image }}" style="width:100%" alt="challengeImg">
+		  <div class="ion-dom">
+			<p ng-if="challengeDetails.title" class="challenge_heading text-center">{{ challengeDetails.title }}</p>
+			<p ng-if="challengeDetails.category_name" class="challenge_title text-center">Category : {{ challengeDetails.category_name }}</p>
+		  </div>
+		</div>
+		<div class="row">			
+			<div class="col col-100">
+				<form name="givingThisChallengeForm" ng-submit="submitgivingThisChallengeForm(givingThisChallengeForm);" novalidate>						
+					<div class="list list-custom">				
+						<!-- Input -->
+							<ionic-datepicker date="StartDate" min="data.minStartDate" callback="CallbackStartDate">
+								<label class="item item-custom item-input item-floating-label">
+									<span class="input-label">Start Date</span>
+									<input type="text" placeholder="Start Date" ng-model="data.StartDate" name="StartDate" required>
+								</label>
+							</ionic-datepicker>
+							<p class="error-p" ng-show="givingThisChallengeForm.StartDate.$error.required && (!givingThisChallengeForm.StartDate.$pristine || givingThisChallengeForm.$submitted)">This Field Is Required</p>
+						<!--/ Input -->
+						<!-- Input -->
+							<ionic-datepicker date="EndDate" min="data.minEndDate" callback="CallbackEndDate">
+								<label class="item item-custom item-input item-floating-label">
+									<span class="input-label">End Date</span>
+									<input type="text" placeholder="End Date" ng-model="data.EndDate" name="EndDate" required>
+								</label>
+							</ionic-datepicker>
+							<p class="error-p" ng-show="givingThisChallengeForm.EndDate.$error.required && (!givingThisChallengeForm.EndDate.$pristine || givingThisChallengeForm.$submitted)">This Field Is Required</p>
+						<!--/ Input -->
+						<!-- Radio -->
+							<ion-radio ng-model="data.type" name="type" ng-value="'reg_user'" required>Friend</ion-radio>
+							<ion-radio ng-model="data.type" name="type" ng-value="'guest'" required>Invited</ion-radio>
+							<p class="error-p" ng-show="givingThisChallengeForm.type.$error.required && (!givingThisChallengeForm.type.$pristine || givingThisChallengeForm.$submitted)">This Field Is Required</p>
+						<!--/ Radio -->
+						<div ng-show="data.type == 'guest'">
+							<!-- Input -->
+							  <label class="item item-custom item-input item-floating-label">
+								<span class="input-label">Name</span>
+								<input type="text" placeholder="Name" ng-model="data.name" name="name" ng-maxlength="15" ng-required="data.type == 'guest'" >
+							  </label>
+							  <p class="error-p" ng-show="givingThisChallengeForm.name.$error.required && (!givingThisChallengeForm.name.$pristine || givingThisChallengeForm.$submitted)">This Field Is Required</p>
+							  <p class="error-p" ng-show="givingThisChallengeForm.name.$error.maxlength && (!givingThisChallengeForm.name.$pristine || givingThisChallengeForm.$submitted)">Cannot Longer Than 15 Characters</p>
+							<!--/ Input -->
+							<!-- Input -->
+							  <label class="item item-custom item-input item-floating-label">
+								<span class="input-label">Email</span>
+								<input type="email" placeholder="Email" ng-model="data.email" name="email" ng-maxlength="30" ng-required="data.type == 'guest'" >
+							  </label>
+							  <p class="error-p" ng-show="givingThisChallengeForm.email.$error.required && (!givingThisChallengeForm.email.$pristine || givingThisChallengeForm.$submitted)">This Field Is Required</p>
+							  <p class="error-p" ng-show="givingThisChallengeForm.email.$error.maxlength && (!givingThisChallengeForm.email.$pristine || givingThisChallengeForm.$submitted)">Cannot Longer Than 30 Characters</p>
+							  <p class="error-p" ng-show="givingThisChallengeForm.email.$invalid && (!givingThisChallengeForm.email.$pristine || givingThisChallengeForm.$submitted) && !givingThisChallengeForm.email.$error.required">Email Is Not Valid</p>
+							<!--/ Input -->
+						</div>
+						<div class="custom-search" ng-show="data.type == 'reg_user'">
+							<!-- Input -->
+							   <label class="item item-input item-select">
+								  <div class="input-label"></div>
+								  <select ng-model="data.friendobj" name="friendemail" ng-required="data.type == 'reg_user'" ng-options="friend as friend.fname for friend in friends " >
+									 <option value="" selected>Select Friend</option>
+									 <!-- <option value="{{ friend.email }}" ng-repeat="friend in friends">{{ friend.fname }} {{ friend.lname }}</option> -->
+								  </select>
+							   </label>
+							   <p class="error-p" ng-show="givingThisChallengeForm.friendemail.$error.required && (!givingThisChallengeForm.friendemail.$pristine || givingThisChallengeForm.$submitted)">This Field Is Required</p>
+						   <!--/ Input -->
+						</div>	
+					</div>
+					<button class="button button-custom button-block">Send Challenge</button>
+				</form>					
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:30px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

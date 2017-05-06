@@ -1,0 +1,26 @@
+<ion-view view-title="My Challenge / In Progress">
+    <ion-content>
+		<div class="list list-custom achievement">
+			<a ng-repeat="myInProgressChallenge in myInProgressChallenges" ng-click="GotoRetograma(myInProgressChallenge.id);" class="item item-thumbnail-left item-icon-left item-icon-right" >
+			  <img ng-if="myInProgressChallenge.image" src="{{ myInProgressChallenge.image }}">
+			  <h2 ng-if="myInProgressChallenge.challenge_name" >{{ myInProgressChallenge.challenge_name }}</h2>
+			  <p ng-if="myInProgressChallenge.category_name" ><i class="ion-help-buoy" style="color:#3FEA57;"></i> {{ myInProgressChallenge.category_name }}</p>
+			  <div class="c100 p{{ myInProgressChallenge.percentage }} very-small green">
+				 <span>{{ myInProgressChallenge.percentage }}%</span>                    
+				 <div class="slice">
+					<div class="bar"></div>
+					<div class="fill"></div>
+				 </div>
+			  </div>
+			  <i class="icon icon-list ion-chevron-right"></i>
+			</a>
+		</div>
+		<div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:20px;">
+				<p ng-if="!myInProgressChallenges"><i class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="!myInProgressChallenges" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>	
+</ion-view>

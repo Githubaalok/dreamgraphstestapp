@@ -1,0 +1,64 @@
+﻿<ion-view view-title="Challenges Bank">
+    <ion-content>
+		<div class="row text-center custom-search">
+			 <div class="col col-50">
+				<div class="list">
+				   <label class="item item-input item-select">
+					  <div class="input-label"></div>
+					  <select name="sCategory" ng-model="sCategory.idCategoria" ng-init="sCategory=''">
+						  <option ng-selected="true" value="">Category</option>
+						  <option ng-repeat = "category in categories" value="{{category.idCategoria}}">{{ category.strNombreCategoria }}</option>
+					  </select>
+				   </label>
+				</div>
+			 </div>
+			 <div class="col col-20">
+				<div class="list">
+				   <label class="item item-input item-select">
+					  <div class="input-label"></div>
+					  <select name="sLevel" ng-model="sLevel.levelReto" ng-init="sLevel=''">
+						 <option ng-selected="true" value="">Level</option>
+						 <option value="1">1</option>
+						 <option value="2">2</option>
+						 <option value="3">3</option>
+						 <option value="4">4</option>
+						 <option value="5">5</option>
+						 <option value="6">6</option>
+						 <option value="7">7</option>
+						 <option value="8">8</option>
+						 <option value="9">9</option>
+						 <option value="10">10</option>
+					  </select>
+				   </label>
+				</div>
+			 </div>
+			 <div class="col col-20">
+				<div class="list">
+					<label class="item item-input">
+						<input type="text" placeholder="Points" name="sPoint" ng-model="sPoint.points">
+					</label>
+				</div>
+			 </div>
+			 <!-- <div class="col col-10">
+				<button class="button button-custom icon ion-android-search"></button>
+			 </div> -->
+			 <div class="col col-10" style="text-align: left;">
+				<button class="button button-custom icon ion-android-refresh" ng-click="sCategory = sLevel = sPoint = ''"></button>
+			</div>
+		</div>
+		<a ng-repeat = "challenge in challenges | filter:sCategory | filter:sPoint | filter:sLevel" ng-if="challenge.challenge_id" ui-sref="app.challenge-details({challenge_id:challenge.challenge_id})">
+         <div style="position:relative;width:100%;line-height: 0;">
+            <img ng-if="challenge.image" src="{{ challenge.image }}" style="width:100%" alt="challengeImg">			  
+            <div class="ion-dom"></div>
+            <p class="challenge_title" ng-if="challenge.title">{{ challenge.title }}</p>
+         </div>
+		</a>
+		<div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:20px;">
+				<p><i ng-if="!challenges" class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="!challenges" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>	
+</ion-view>

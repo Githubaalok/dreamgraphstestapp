@@ -1,0 +1,63 @@
+<ion-view view-title="Achievement / Daily Entry">
+	<ion-content>
+		<div class="list card custom-list-card" ng-repeat="dailyentry in dailyentries" ng-if="!dailyentries.err">
+			<div class="item item-avatar">
+				<img ng-if="dailyentry.user_image_url" src="{{ dailyentry.user_image_url }}">
+				<span class="pull-left">
+					<h3>{{ dailyentry.fisrt_name }} {{ dailyentry.last_name }}</h3>
+					<p class="text-magenta">{{ dailyentry.wall_date }}</p>
+				</span>
+			</div>
+			<div class="item item-body">
+				<div ng-if="dailyentry.wall_image_url">
+					<img ng-if="dailyentry.type == 'image'" class="full-image" src="{{ dailyentry.wall_image_url }}">
+					<div class="video-container" ng-if="dailyentry.type == 'video'">
+						<iframe src="" dynamic-url dynamic-url-src="{{ dailyentry.wall_image_url}}" frameborder="0" width="560" height="315" ></iframe>
+					</div>
+				</div>
+				<p>{{ dailyentry.details }}</p>
+				<p class="likeandcomments">
+					<span class="pull-left">
+						<span class="subdued"><a href="" ng-click="wallLikeDislike(dailyentry.wall_id,$index,dailyentry.user_exist);"><i ng-if="dailyentry.user_exist == 0" class="ion-ios-heart-outline text-magenta" ></i><i ng-if="dailyentry.user_exist != 0" class="ion-ios-heart text-magenta" ></i></a> <a href="" class="text-primary" ng-click="dailyentry.like_count != 0 ? likeDetails(dailyentry.wall_id) : '';">{{ dailyentry.like_count }} Like</a></span>
+						<span class="subdued" style="padding-left:10px;"><a href="" ng-init="showComments[$index] = false" ng-click="showComments[$index] = !showComments[$index];showComments[$index] ? commentsDetails(dailyentry.wall_id,$index) : '';"><i class="ion-ios-chatbubble-outline text-magenta"></i> <span class="text-primary">{{ dailyentry.comment_count }} Comments</span></a></span>
+					</span>
+					<span class="pull-right">
+						<i class="ion-android-share-alt text-magenta"></i>
+					</span>
+				</p>
+			</div>
+			<div class="item-comments" ng-if="showComments[$index]">
+				<div class="commentSpinner" ng-if="loadingComments[$index]">
+					<ion-spinner icon="lines" class="spinner-primary"></ion-spinner>
+				</div>
+				<div class="list">
+					<a class="item item-thumbnail-left" href="" ng-repeat="getcomment in dailyentries[$index].getcomments">
+					  <img ng-if="getcomment.user_image_url" src="{{ getcomment.user_image_url }}">
+					  <h3>{{ getcomment.username }}</h3>
+					  <p style="white-space: normal;">{{ getcomment.comment }}</p>
+					</a>
+					<a class="item item-thumbnail-left" style="padding:12px !important;" href="" ng-if="dailyentries[$index].getcomments == 'No Comment Found'">
+					  <p>You Will Be The First To Comment On This</p>
+					</a>
+					<div class="item item-thumbnail-left" style="padding-left:10px !important;">
+						<form name="commentForm[$index]" class="newcommentform" ng-submit="submitcommentForm(dailyentry.wall_id,$index);" novalidate>
+							<div class="item item-input-inset">
+								<label class="item-input-wrapper" style="background:none;">
+									<textarea placeholder="Write Your Comment...." style="width:100%" ng-model="formData.newcomment[$index]" required></textarea>
+								</label>
+								<button class="button icon ion-paper-airplane button-send" style="margin-left:0px;" ng-disabled="commentForm[$index].$invalid"></button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:20px;">
+				<p><i ng-if="dailyentries.err" class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="dailyentries.err" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

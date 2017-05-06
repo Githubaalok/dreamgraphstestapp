@@ -1,0 +1,26 @@
+<ion-view view-title="Challenges Friends / Without Accepted">
+    <ion-content>
+		<div class="list list-custom accepting">
+			<a class="item item-thumbnail-right item-icon-left item-icon-right" ng-repeat="data in notaccepted" ui-sref="app.friend-without-accepted-details({ record_id:data.id })">
+				<div class="div_right">
+					<div class="pg-ri">
+						<img ng-if="data.image" src="{{ data.image }}">
+					</div>
+					<div class="pg-lt">
+						<span>{{ data.challenge_title }}</span>
+					</div>
+				</div>
+			  <h2>{{ data.name }}</h2>
+			  <p><i class="ion-help-buoy" style="color:#3FEA57;"></i> Not Accepted</p>
+			  <i class="icon icon-list ion-chevron-right"></i>
+			</a>
+		</div>
+		<div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:10px;">
+				<p ng-if="!notaccepted[0]"><i class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="!notaccepted[0]" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>	
+</ion-view>

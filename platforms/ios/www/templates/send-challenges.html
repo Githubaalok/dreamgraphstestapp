@@ -1,0 +1,19 @@
+<ion-view view-title="My Challenge / Send Challenges">
+    <ion-content>
+		<div class="list list-custom">
+			<a href="#/app/send-challenge-details" ng-repeat="mysendChallenge in mysendChallenges" ui-sref="app.send-challenge-details({ record_id:mysendChallenge.record_id })" class="item item-thumbnail-left item-icon-left item-icon-right">
+			  <img ng-if="mysendChallenge.image" src="{{ mysendChallenge.image }}">
+			  <h2 ng-if="mysendChallenge.challange_name" style="max-width:55%">{{ mysendChallenge.challange_name }}</h2>
+			  <p ng-if="mysendChallenge.cat_name"><i class="ion-help-buoy" style="color:#3FEA57;"></i> {{ mysendChallenge.cat_name }}</p>
+			  <i class="icon icon-list ion-chevron-right"></i>
+			</a>
+		</div>
+		<div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:20px;">
+				<p ng-if="!mysendChallenges"><i class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="!mysendChallenges" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

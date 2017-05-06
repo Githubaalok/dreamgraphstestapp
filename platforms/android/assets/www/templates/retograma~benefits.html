@@ -1,0 +1,13 @@
+<ion-view view-title="Retograma / Benefits">
+	<ion-content>	
+		<ul class="list list-custom text-white wrap">
+			<a class="item" ng-if="benefits.benefit1"><b>1.</b> {{ benefits.benefit1 }}</a>
+			<a class="item" ng-if="benefits.benefit2"><b>2.</b> {{ benefits.benefit2 }}</a>
+			<a class="item" ng-if="benefits.benefit3"><b>3.</b> {{ benefits.benefit3 }}</a>
+		</ul>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:10px;">	</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

@@ -1,0 +1,17 @@
+<ion-view view-title="Retograma / Motivate">
+	<ion-content>
+		<a class="shadow-custom col bg-none" href="" ng-if="motivates.motivate_image_url" ng-click="GotoLink(motivates.motivate_image_url)">
+			<img src="{{ motivates.motivate_image_url }}" style="width:100%" alt="challengeImg">
+			<div class="ion-dom">
+				<p class="challenge_title text-center">Click to See In Browser</p>
+			</div>
+		</a>			
+		<div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:30px;">
+				<p ng-if="!motivates.motivate_image_url"><i class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="!motivates.motivate_image_url" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

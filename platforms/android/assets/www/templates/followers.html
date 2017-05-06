@@ -1,0 +1,22 @@
+<ion-view view-title="Followers">
+	<ion-content>
+		<div class="list list-custom list-followers">
+			<div class="item item-avatar" href="#" ng-repeat="follower in followers" ng-if="followers">
+			  <img ng-if="follower.user_image_url" src="{{ follower.user_image_url }}">
+			  <h2 class="text-white">
+				<a style="color:white;" ui-sref="app.member-profile({user_id:follower.user_id})">
+					{{ follower.first_name }} {{ follower.last_name }}
+				</a>
+			  </h2>
+			  <p><i class="ion-ios-location"></i> {{ follower.city }}  {{ follower.country }}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:30px;">
+				<p><i ng-if="!followers[0]" class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="!followers[0]" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

@@ -1,0 +1,62 @@
+﻿<ion-view view-title="My Challenge / Failed / Details">
+    <ion-content>
+		<div class="shadow-custom">
+          <img ng-if="myInFailedDetails.image" src="{{ myInFailedDetails.image }}" style="width:100%" alt="challengeImg">
+		  <div class="ion-dom">
+			<p ng-if="myInFailedDetails.challenge_title" class="challenge_heading text-center">{{ myInFailedDetails.challenge_title }}</p>
+		  </div>
+		</div>
+		<div class="row">
+			<div class="col col-100 text-center">
+				<div class="list list-custom">
+				  <a class="item">
+					<span class="datatitle">Title</span> <span class="datavalue">{{ myInFailedDetails.challenge_title }}</span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">Category</span> <span class="datavalue">{{ myInFailedDetails.category }}</span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">Start Date </span> <span class="datavalue">{{ myInFailedDetails.start_date }}</span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">End Date</span> <span class="datavalue">{{ myInFailedDetails.end_date }}</span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">Challenging</span> <span class="datavalue">{{ myInFailedDetails.first_name }} {{ myInFailedDetails.last_name }}</span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">Points</span> <span class="datavalue">{{ myInFailedDetails.points }}</span>
+				  </a>
+				  <a class="item" ng-if="myInFailedDetails.description">
+					<span class="datatitle">Description</span> <span class="datavalue" style="text-align: left;white-space: normal;width: 100%;margin-top: 5px;" ng-bind-html="myInFailedDetails.description"></span>
+				  </a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+		  <div class="col text-center" ng-if="myInFailedDetails.status == '1' || myInFailedDetails.status == '2' || myInFailedDetails.status == '5'">
+			<a ng-click="GotoLink()" class="button button-custom button-block">
+				Paynow
+			</a>
+		  </div>
+		  <div class="col text-center">
+			<a href="#/app/my-in-failed" class="button button-custom button-block">
+				<span>Back</span>
+			</a>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="c100 p{{ myInFailedDetails.Cumplimiento }} big red div-center">
+			 <span>{{ myInFailedDetails.Cumplimiento }}%</span>                    
+			 <div class="slice">
+				<div class="bar"></div>
+				<div class="fill"></div>
+			 </div>
+		  </div>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:200px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

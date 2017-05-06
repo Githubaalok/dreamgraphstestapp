@@ -1,0 +1,68 @@
+<ion-view view-title="Retograma / Bitacora Challenge">
+	<ion-content>
+		<div class="row">			
+			<div class="col col-100">
+				<form name="bitacoraChallengeForm" ng-submit="submitbitacoraChallengeForm(bitacoraChallengeForm);" novalidate>						
+					<div class="list list-custom">
+						<!-- Input -->
+						  <label class="item item-custom item-input item-floating-label">
+							<span class="input-label">Challenge</span>
+							<input type="text" placeholder="Challenge" style="background-color: rgba(0,0,0,0);" ng-readonly="true" ng-model="data.challenge_name" name="challenge_name" required>
+						  </label>
+						  <p class="error-p" ng-show="bitacoraChallengeForm.challenge_name.$error.required && (!bitacoraChallengeForm.challenge_name.$pristine || bitacoraChallengeForm.$submitted)">This Field Is Required</p>
+						<!--/ Input -->
+						<div class="custom-search">
+							<!-- Input -->
+							   <label class="item item-input item-select" style="background:none;border-bottom: 1px solid rgba(255,255,255,0.3) !important;height:70px">
+								  <div class="input-label"></div>
+								  <select ng-model="data.days_obj" name="day_name" ng-options="days_obj as days_obj.day_name disable when days_obj.status == 'deactive' for days_obj in getdata.msg " required>
+									 <option value="" selected>Day</option>
+									 <!--<option ng-repeat="days in getdata.msg" value="{{ days.value }}" ng-disabled="days.status == 'deactive'">{{ days.day_name }}</option>-->
+								  </select>
+							   </label>
+							   <p class="error-p" ng-show="bitacoraChallengeForm.day_name.$error.required && (!bitacoraChallengeForm.day_name.$pristine || bitacoraChallengeForm.$submitted)">This Field Is Required</p>
+						   <!--/ Input -->
+						</div>
+						<!-- Input -->
+							<ionic-datepicker date="Seldate" min="data.minSeldate" callback="CallbackSeldate">
+								<label class="item item-custom item-input item-floating-label">
+									<span class="input-label">Date</span>
+									<input type="text" placeholder="Date" ng-model="data.Seldate" name="Seldate" required>
+								</label>
+							</ionic-datepicker>
+							<p class="error-p" ng-show="bitacoraChallengeForm.Seldate.$error.required && (!bitacoraChallengeForm.Seldate.$pristine || bitacoraChallengeForm.$submitted)">This Field Is Required</p>
+						<!--/ Input -->
+						<!-- Input -->
+						  <label class="item item-custom item-input item-floating-label">
+							<span class="input-label">Description</span>
+							<textarea placeholder="Description" ng-model="data.description" name="description" required></textarea>
+						  </label>
+						  <p class="error-p" ng-show="bitacoraChallengeForm.description.$error.required && (!bitacoraChallengeForm.description.$pristine || bitacoraChallengeForm.$submitted)">This Field Is Required</p>
+						<!--/ Input -->
+						<img ng-if="data.imageData" ng-src="{{data.imageData}}" style="width: 100%;margin-top: 15px;">
+						<div class="video-container" ng-if="data.videoData">
+							<iframe src="" ng-if="data.videoData" dynamic-url dynamic-url-src="{{ data.videoData }}" frameborder="0" width="560" height="315" ></iframe>
+						</div>
+						<div class="row bitacoramediabuttons">
+							<div class="col">
+								<a href="" class="" ng-click="chooseOption4PPhoto();">
+									<i class="icon ion-image"></i>
+								</a>
+							</div>
+							<div class="col">
+								<a href="" class="" ng-click="chooseRVideo();">
+									<i class="icon ion-ios-videocam"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+					<button class="button button-custom button-block">Save</button>
+				</form>					
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:30px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

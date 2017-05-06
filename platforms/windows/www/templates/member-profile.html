@@ -1,0 +1,124 @@
+﻿<ion-view view-title="Profile">
+	<ion-content>
+		<div style="background-image: url('{{ userData.cover_image_url }}'); background-size: cover; background-repeat: no-repeat; background-position: center top;">
+			<div class="row text-center profile">
+				<div class="col col-10">
+					<a href="" ng-if="viewingSelfProfile == 'YES'" ng-click="chooseOption4CoverP();" ><i class="ion-camera" style="background: rgba(0,0,0,0.8);padding: 0px 5px 0px 5px;"></i></a>
+				</div>
+				<div class="col col-80">
+					<h3>{{ userData.first_name }} {{ userData.last_name }}</h3>
+				</div>
+				<div class="col col-10">
+					<a ui-sref="app.update-profile({user_id:userData.user_id})" ng-if="viewingSelfProfile == 'YES'"><i class="ion-gear-b" style="background: rgba(0,0,0,0.8);padding: 0px 5px 0px 5px;"></i></a>
+				</div>
+			</div>
+			<div class="row pro-img text-center">
+				<div class="col col-25">
+					<div class="col col-30">
+						<div class="row">
+							<div class="col col-50 bg-orange">
+								<img style="width:85%" src="img/siteimgs/dreamgraphs2_logo.png">
+							</div>
+							<div class="col col-50 bg-orange text-center">	
+								<p>retos</p>
+								<p>{{ userData.challenge_count }}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col col-50 bg-blue">
+								<img style="width:85%" src="img/siteimgs/dreamgraphs3_logo.png">
+							</div>
+							<div class="col col-50 bg-blue text-center">	
+								<p>Puntos</p>
+								<p>{{ userData.points }}</p>
+							</div>
+						</div>
+						<div class="row" style="">
+							<div class="col col-50 bg-green">
+								<img style="width:85%" src="img/siteimgs/dreamgraphs4_logo.png">
+							</div>
+							<div class="col col-50 bg-green text-center">	
+								<p>Compentation</p>
+								<p>{{ userData.amount }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col col-50 pic">
+					<div class="profile_imgwithicon">
+						<img ng-if="userData.user_image_url" src="{{ userData.user_image_url }}">
+						<a class="icon-profile-camera" href="" ng-if="viewingSelfProfile == 'YES'" ng-click="chooseOption4ProfileP();"><i style="color: rgba(0,0,0,0.5);" class="ion-camera"></i></a>
+					</div>
+					<p class="text-white" ng-if="userData.city || userData.country"><i class="ion-ios-location"></i> {{ userData.city }} {{ userData.country }}</p>
+				</div>
+				<div class="col col-25">
+					<div class="col col-30">
+						<div class="row">
+							<div class="col col-50 bg-purple" style="max-width: 47%;">
+								<img style="width:85%;margin: 5px 0px 3px 3px;" src="img/siteimgs/8155-200.png">
+							</div>
+							<div class="col col-50 bg-purple text-center" style="max-width: 47%;">	
+								<p>Suggested Challenges</p>
+								<p>{{ userData.f_suggest }}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col col-50 bg-lightpink" style="max-width: 47%;">
+								<img style="width:85%;margin: 8px 0px 2px 2px;" src="img/siteimgs/apple.png">
+							</div>
+							<div class="col col-50 bg-lightpink text-center" style="max-width: 47%;">	
+								<p>Bonus</p>
+								<p>{{ userData.bonus }}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col col-100">
+								<a href="" ng-if="viewingSelfProfile != 'YES'" ng-click="followunfollow(userData.user_id,userData.follow_is);" style="margin-left: 2px;">
+									<span class="button button-balanced button-small button-block" style="border-radius: 0;padding-top: 6px;padding-bottom: 6px;margin-top: 0;" ng-if="userData.follow_is == '0'">Follow</span>
+									<span class="button button-assertive button-small button-block" style="border-radius: 0;padding-top: 6px;padding-bottom: 6px;margin-top: 0;" ng-if="userData.follow_is == '1'">Unfollow</span>
+								</a> 
+							</div>
+						</div>
+					</div>
+				</div>			
+			</div>
+		</div>
+		<div class="button-bar custom-button-group">
+		  <a ui-sref="app.followers({user_id:userData.user_id})" class="button button-custom">{{ userData.follower }} Followers</a>
+		  <a ui-sref="app.my-activity({user_id:userData.user_id})" class="button button-custom" >
+			<span ng-if="viewingSelfProfile == 'YES'">My</span> 
+			<span ng-if="viewingSelfProfile == 'NO'">User</span>
+			Activity
+		  </a>
+		  <a ui-sref="app.following({user_id:userData.user_id})" class="button button-custom">{{ userData.following }} Following</a>
+		</div>
+		<div ng-repeat="Cchallenge in userData.complete_challenge">
+			<div class="row custom-profile-img" ng-if="$even">
+				<div class="col col-25" ng-if="userData.complete_challenge[$index].challenge_image">
+					<a ui-sref="app.achievements~daily-entry({record_id:userData.complete_challenge[$index].accpet_id})">
+						<img style="width:100%" src="{{ userData.complete_challenge[$index].challenge_image }}">
+					</a>
+				</div>
+				<div class="col col-25" ng-if="userData.complete_challenge[$index + 1].challenge_image">
+					<a ui-sref="app.achievements~daily-entry({record_id:userData.complete_challenge[$index + 1].accpet_id})">
+						<img style="width:100%" src="{{ userData.complete_challenge[$index + 1].challenge_image }}">
+					</a>
+				</div>
+				<div class="col col-25" ng-if="userData.complete_challenge[$index + 2].challenge_image">
+					<a ui-sref="app.achievements~daily-entry({record_id:userData.complete_challenge[$index + 2].accpet_id})">
+						<img style="width:100%" src="{{ userData.complete_challenge[$index + 2].challenge_image }}">
+					</a>
+				</div>
+				<div class="col col-25" ng-if="userData.complete_challenge[$index + 3].challenge_image">
+					<a ui-sref="app.achievements~daily-entry({record_id:userData.complete_challenge[$index + 3].accpet_id})">
+						<img style="width:100%" src="{{ userData.complete_challenge[$index + 3].challenge_image }}">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:40px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

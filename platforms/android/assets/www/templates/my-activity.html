@@ -1,0 +1,75 @@
+<ion-view view-title="{{ tit }} Activity">
+	<ion-content>
+		<div class="list card custom-list-card" ng-repeat="wallitem in wallitems" ng-if="!wallitems.err">
+			<div class="item item-avatar">
+				<img ng-if="wallitem.user_image_url" src="{{ wallitem.user_image_url }}">
+				<span class="pull-left">
+					<h3>{{ wallitem.fisrt_name }} {{ wallitem.last_name }}</h3>
+					<p class="text-magenta">{{ wallitem.wall_date }}</p>
+				</span>
+			</div>
+			<div class="item item-body">
+				<div ng-if="wallitem.wall_image_url">
+					<img ng-if="wallitem.type == 'image'" class="full-image" src="{{ wallitem.wall_image_url }}">
+					<div class="video-container" ng-if="wallitem.type == 'video'">
+						<iframe src="" dynamic-url dynamic-url-src="{{ wallitem.wall_image_url}}" frameborder="0" width="560" height="315" ></iframe>
+					</div>
+					<!-- For result -->
+					<div class="Cresult" ng-if="wallitem.type == 'c_c' || wallitem.type == 'f_f'">
+						<div class="resultCtitle_points">
+							<p>{{ wallitem.descripcion }}</p>
+							<p>Points: {{ wallitem.points }} </p>
+						</div>
+						<img class="full-image" src="{{ wallitem.wall_image_url}}">
+						<div class="Cresult_text">
+							<h2 class="Cresult_textcc" ng-if="wallitem.type == 'c_c'"><i class="ion-android-happy"></i> Reto Completado!!</h2>
+							<h2 class="Cresult_textff" ng-if="wallitem.type == 'f_f'"><i class="ion-android-sad"></i> Reto Fallido!!</h2>
+						</div>
+					</div>
+				</div>
+				<p>{{ wallitem.details }}</p>
+				<p class="likeandcomments">
+					<span class="pull-left">
+						<span class="subdued"><a href="" ng-click="wallLikeDislike(wallitem.wall_id,$index,wallitem.user_exist);"><i ng-if="wallitem.user_exist == 0" class="ion-ios-heart-outline text-magenta" ></i><i ng-if="wallitem.user_exist != 0" class="ion-ios-heart text-magenta" ></i></a> <a href="" class="text-primary" ng-click="wallitem.like_count != 0 ? likeDetails(wallitem.wall_id) : '';">{{ wallitem.like_count }} Like</a></span>
+						<span class="subdued" style="padding-left:10px;"><a href="" ng-init="showComments[$index] = false" ng-click="showComments[$index] = !showComments[$index];showComments[$index] ? commentsDetails(wallitem.wall_id,$index) : '';"><i class="ion-ios-chatbubble-outline text-magenta"></i> <span class="text-primary">{{ wallitem.comment_count }} Comments</span></a></span>
+					</span>
+					<span class="pull-right">
+						<i class="ion-android-share-alt text-magenta"></i>
+					</span>
+				</p>
+			</div>
+			<div class="item-comments" ng-if="showComments[$index]">
+				<div class="commentSpinner" ng-if="loadingComments[$index]">
+					<ion-spinner icon="lines" class="spinner-primary"></ion-spinner>
+				</div>
+				<div class="list">
+					<a class="item item-thumbnail-left" href="" ng-repeat="getcomment in wallitems[$index].getcomments">
+					  <img ng-if="getcomment.user_image_url" src="{{ getcomment.user_image_url }}">
+					  <h3>{{ getcomment.username }}</h3>
+					  <p style="white-space: normal;">{{ getcomment.comment }}</p>
+					</a>
+					<a class="item item-thumbnail-left" style="padding:12px !important;" href="" ng-if="wallitems[$index].getcomments == 'No Comment Found'">
+					  <p>You Will Be The First To Comment On This</p>
+					</a>
+					<div class="item item-thumbnail-left" style="padding-left:10px !important;">
+						<form name="commentForm[$index]" class="newcommentform" ng-submit="submitcommentForm(wallitem.wall_id,$index);" novalidate>
+							<div class="item item-input-inset">
+								<label class="item-input-wrapper" style="background:none;">
+									<textarea placeholder="Write Your Comment...." style="width:100%" ng-model="formData.newcomment[$index]" required></textarea>
+								</label>
+								<button class="button icon ion-paper-airplane button-send" style="margin-left:0px;" ng-disabled="commentForm[$index].$invalid"></button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:20px;">
+				<p><i ng-if="wallitems.err" class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="wallitems.err" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

@@ -1,0 +1,82 @@
+<ion-side-menus enable-menu-with-back-views="false" ng-controller="MenuController">
+  <ion-side-menu-content>
+    <ion-nav-bar class="header-bar bar-primary">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-navicon" menu-toggle="left" ng-show="login != ''" ng-controller="LogoutCtrl">
+        </button>
+      </ion-nav-buttons>
+	  <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-android-more-vertical" menu-toggle="right" >
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-primary">
+      <h1 class="title">Menu</h1>
+    </ion-header-bar>
+    <ion-content class="custom-menu">
+	    <div class="col col-100 text-center custom-logo">
+          	<img src="img/siteimgs/logo_dgphs.png" alt="logo" style="height:95px;width:95px;">
+		</div>
+        <ion-list>
+			<ion-item menu-close class="item item-icon-left" href="#/app/home">
+			  <i class="icon ion-opacity ion-ios-home"></i>Home
+			</ion-item>
+			<!-- <div class="list" style="margin-bottom:0px;">
+				<div class="item item-custom" ng-init="showSub1 = false" ng-click="showSub1 = !showSub1"><span style="float:left"><i class="icon ion-opacity  ion-ios-eye my" ></i> My Challenge </span> <i class="ion-opacity ion-dd ion-chevron-right" style="float:right" ng-show="!showSub1"></i> <i class="ion-opacity ion-dd ion-chevron-down" style="float:right" ng-show="showSub1" ></i></div>
+				<a href="" ng-click="GotoPage('my-challenges~without-accepted');" ><div class="item child-item" ng-show="showSub1" ><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Received</div></a>
+				<a href="" ng-click="GotoPage('my-in-progress');" ><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>In Progress</div></a>
+				<a href="" ng-click="GotoPage('my-in-failed');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>In Failed</div></a>
+				<a href="" ng-click="GotoPage('my-achievements');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Achievements</div></a>
+				<a href="" ng-click="GotoPage('send-challenges');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Sent</div></a>
+			</div> -->
+			<a href="" ng-click="GotoPage('my-challenge');"><div class="item child-item"><i class="ion-opacity sub-menu-ion ion-dd ion-ios-eye"></i>My Challenge</div></a>
+			<ion-item menu-close class="item item-icon-left" href="#/app/challenges">
+			  <i class="icon ion-opacity ion-android-home"></i>Challenges Bank
+			</ion-item>
+			<ion-item menu-close class="item item-icon-left" href="#/app/friends-list">
+			  <i class="icon ion-opacity ion-ios-people"></i>Friends
+			</ion-item>
+			<ion-item menu-close class="item item-icon-left" href="#/app/wall">
+			  <i class="icon ion-opacity ion-ios-world"></i>Wall
+			</ion-item>
+			<a href="" ng-click="GotoPage('challenge-friend');"><div class="item child-item"><i class="ion-opacity sub-menu-ion ion-dd ion-android-walk"></i>Challenges Friends</div></a>
+			<!-- <div class="list" style="margin-bottom:0px;">
+				<div class="item item-custom" ng-init="showSub2 = false" ng-click="showSub2 = !showSub2"><span style="float:left"><i class="icon ion-opacity ion-android-walk my" ></i> Challenges Friends </span> <i class="ion-opacity ion-dd ion-chevron-right" style="float:right" ng-show="!showSub2"></i> <i class="ion-opacity ion-dd ion-chevron-down" style="float:right" ng-show="showSub2" ></i></div>
+				<a href="" ng-click="GotoPage('friend-without-accepted');"><div class="item child-item" ng-show="showSub2" ><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Without Accepting</div></a>
+				<a href="" ng-click="GotoPage('friend-in-progress');"><div class="item child-item" ng-show="showSub2"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>In Progress</div></a>
+				<a href="" ng-click="GotoPage('friend-in-failed');"><div class="item child-item" ng-show="showSub2"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Failed</div></a>
+				<a href="" ng-click="GotoPage('friend-achievements');"><div class="item child-item" ng-show="showSub2"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Achievements</div></a>
+			</div> -->
+		</ion-list>
+    </ion-content>
+  </ion-side-menu>
+  <ion-side-menu side="right" width="210">
+    <ion-header-bar class="bar-primary">
+      <h1 class="title">Dreamgraphs</h1>
+    </ion-header-bar>
+    <ion-content class="custom-menu">
+        <ion-list>
+			<ion-item menu-close class="item item-icon-left" href="#">
+			  <i class="icon ion-opacity ion-ios-videocam"></i>Demo (Future Video)
+			</ion-item>
+			<ion-item menu-close class="item item-icon-left" href="#/app/settings" ng-show="login != ''" ng-controller="LogoutCtrl">
+			  <i class="icon ion-opacity ion-gear-b"></i>Settings
+			</ion-item>
+			<ion-item menu-close class="item item-icon-left" href="#/app/change-password" ng-show="login != ''" ng-controller="LogoutCtrl">
+			  <i class="icon ion-opacity ion-unlocked"></i>Change Password
+			</ion-item>
+			<ion-item menu-close class="item item-icon-left" href="#/app/compensation" ng-show="login != ''" ng-controller="LogoutCtrl">
+			  <i class="icon ion-opacity ion-cash"></i>Compensation
+			</ion-item>
+			<ion-item menu-close class="item item-icon-left" href="#/app/home" ng-controller="LogoutCtrl" ng-click='logout();' ng-show="login != ''">  
+			  <i class="icon ion-opacity ion-log-out"></i>Logout
+			</ion-item>
+		</ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

@@ -1,0 +1,98 @@
+<ion-view view-title="Sign Up">
+	<ion-content>
+        <div class="row">
+          <div class="col col-100">
+            <form name="memberRegistrationForm" ng-submit="submitRegistrationForm(memberRegistrationForm);" ng-controller="registrationCtrl" novalidate>
+				<div class="list list-custom">
+					<!-- Input -->
+					  <label class="item item-custom item-input item-floating-label">
+						<span class="input-label">Username</span>
+						<input type="text" placeholder="Username" ng-model="username" name="username" ng-minlength="5" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.username.$error.required && (!memberRegistrationForm.username.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.username.$error.minlength && (!memberRegistrationForm.username.$pristine || memberRegistrationForm.$submitted)">Min 5 Characters Is Required</p>
+					<!--/ Input -->
+					<div class="row" style="padding-left: 0;padding-right: 0;">
+						<div class="col col-50" style="padding-left: 0;">
+							<!-- Input -->
+							  <label class="item item-custom item-input item-floating-label">
+								<span class="input-label">First Name</span>
+								<input type="text" placeholder="First Name" ng-model="first_name" name="first_name" ng-maxlength="15" required>
+							  </label>
+							  <p class="error-p" ng-show="memberRegistrationForm.first_name.$error.required && (!memberRegistrationForm.first_name.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+							  <p class="error-p" ng-show="memberRegistrationForm.first_name.$error.maxlength && (!memberRegistrationForm.first_name.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 15 Characters</p>
+							<!--/ Input -->
+						</div>
+						<div class="col col-50" style="padding-right: 0;">
+							<!-- Input -->
+							  <label class="item item-custom item-input item-floating-label">
+								<span class="input-label">Last Name</span>
+								<input type="text" placeholder="Last Name" ng-model="last_name" name="last_name" ng-maxlength="15" required>
+							  </label>
+							  <p class="error-p" ng-show="memberRegistrationForm.last_name.$error.required && (!memberRegistrationForm.last_name.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+							  <p class="error-p" ng-show="memberRegistrationForm.last_name.$error.maxlength && (!memberRegistrationForm.last_name.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 15 Characters</p>
+							<!--/ Input -->
+						</div>
+					</div>
+					<!-- Input -->
+					  <label class="item item-custom item-input item-floating-label">
+						<span class="input-label">Password</span>
+						<input type="password" placeholder="Password" ng-model="password" name="password" ng-minlength="8" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.password.$error.required && (!memberRegistrationForm.password.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.password.$error.minlength && (!memberRegistrationForm.password.$pristine || memberRegistrationForm.$submitted)">Min 8 Characters Is Required</p>
+					<!--/ Input -->
+					<!-- Input -->
+					  <label class="item item-custom item-input item-floating-label">
+						<span class="input-label">Confirm Password</span>
+						<input type="password" placeholder="Confirm Password" ng-model="confirmpassword" name="confirmpassword" required ng-pattern="password">
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.confirmpassword.$error.required && (!memberRegistrationForm.confirmpassword.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.confirmpassword.$error.pattern && (!memberRegistrationForm.confirmpassword.$pristine || memberRegistrationForm.$submitted)">Password & Confirm Password Not Match</p>
+				    <!--/ Input -->
+					<!-- Input -->
+					  <label class="item item-custom item-input item-floating-label">
+						<span class="input-label">Email</span>
+						<input type="email" placeholder="Email" ng-model="email" name="email" ng-maxlength="40" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.email.$error.required && (!memberRegistrationForm.email.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.email.$error.maxlength && (!memberRegistrationForm.email.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 40 Characters</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.email.$invalid && (!memberRegistrationForm.email.$pristine || memberRegistrationForm.$submitted) && !memberRegistrationForm.email.$error.required">Email Is Not Valid</p>
+					<!--/ Input -->
+				    <!-- Input -->
+					  <label class="item item-custom item-input item-floating-label">
+						<span class="input-label">Phone</span>
+						<input type="tel" placeholder="Phone" ng-model="phone" name="phone" ng-minlength="8" ng-pattern="/^[0-9]{1,15}$/" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.phone.$error.required && (!memberRegistrationForm.phone.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.phone.$error.minlength && (!memberRegistrationForm.phone.$pristine || memberRegistrationForm.$submitted)">Min 8 Characters Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.phone.$error.pattern && (!memberRegistrationForm.phone.$pristine || memberRegistrationForm.$submitted) && !memberRegistrationForm.phone.$error.minlength">Phone Number Is Invalid</p>
+				    <!--/ Input -->
+					<!-- Input -->
+					  <ion-list>
+						<ion-checkbox style="border:none;" class="checkbox-custom" ng-model="termsandconditions" name="termsandconditions" value="1" required>Accept Terms & Conditions</ion-checkbox>
+					  </ion-list>
+					  <p class="text-orange" ng-show="(termsandconditions == false || termsandconditions === undefined) && (!memberRegistrationForm.termsandconditions.$pristine || memberRegistrationForm.$submitted)">Please Accept Terms & Conditions</p>
+					<!--/ Input -->
+				</div>
+				<button class="button button-custom button-block">
+					CREATE ACCOUNT
+				</button>
+				<p class="text-center text-white"><b>OR</b></p>
+            </form>
+          </div>
+       	</div>
+		<div class="row text-center">
+			<div class="col col-20"></div>
+			<div class="col col-20"><a href=""><img src="img/siteimgs/facebook.png" alt="logo" style="height:35px;width:35px;"></a></div>
+			<div class="col col-20"><a href=""><img src="img/siteimgs/google-plus.png" alt="logo" style="height:35px;width:35px;"></a></div>
+			<div class="col col-20"><a href=""><img src="img/siteimgs/twitter.png" alt="logo" style="height:35px;width:35px;"></a></div>
+			<div class="col col-20"></div>
+        </div>
+		<div class="row">
+			<div class="col col-100 text-center">
+				<p class="text-center"><a class="text-white" href="#/app/login">Already Registered ? Sign In</a></p>
+			</div>
+		</div>
+    </ion-content>
+</ion-view>

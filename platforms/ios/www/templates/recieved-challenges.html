@@ -1,0 +1,32 @@
+<ion-view view-title="Received Challenges">
+    <ion-content>
+		<div class="recd-challenges" ng-repeat="recdChallenge in recdChallenges">
+			<div class="shadow-custom">
+			  <img src="{{ recdChallenge.image }}" style="width:100%" alt="challengeImg">
+			  <div class="ion-dom">
+				<p class="challenge_heading text-center">{{ recdChallenge.title }}</p>
+				<p class="challenge_title text-center">Sent By : {{ recdChallenge.sender_name }}</p>
+			  </div>
+			</div>
+			<div class="row">
+			  <div class="col col-50 text-center">
+				<button ng-click="cancelRecdChallenge(recdChallenge.id,recdChallenge.challenge_id)" class="button button-custom button-block" style="padding:0px;margin:0px;">
+					Cancel
+				</button>
+			  </div>
+			  <div class="col col-50 text-center">
+				<button ng-click="acceptRecdChallenge(recdChallenge.id,recdChallenge.challenge_id,recdChallenge.start_date,recdChallenge.end_date,recdChallenge.challenges_send_by)" class="button button-custom button-block" style="padding:0px;margin:0px;">
+					Accept
+				</button>
+			  </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:30px;">
+				<p ng-if="!recdChallenges"><i class="ion-alert-circled icon-popup"></i></p>
+				<h4 ng-if="!recdChallenges" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>	
+</ion-view>

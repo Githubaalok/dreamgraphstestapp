@@ -1,0 +1,50 @@
+﻿<ion-view view-title="Challenges Friends / In Failed / Details">
+    <ion-content>
+        <div class="shadow-custom">
+          <img ng-if="infailed_details.image" src="{{ infailed_details.image }}" style="width:100%" alt="challengeImg">
+		  <div class="ion-dom">
+			<p ng-if="infailed_details.challenge_title" class="challenge_heading text-center">{{ infailed_details.challenge_title }}</p>
+		  </div>
+		</div>
+		<div class="list list-custom">
+		  <a class="item" ng-if="infailed_details.first_name">
+			<span class="datatitle">Challenging</span> <span class="datavalue">{{ infailed_details.first_name }} {{ infailed_details.last_name }}</span>
+		  </a>
+		  <a class="item" ng-if="infailed_details.category">
+			<span class="datatitle">Category</span> <span class="datavalue">{{ infailed_details.category }}</span>
+		  </a>
+		  <a class="item" ng-if="infailed_details.start_date">
+			<span class="datatitle">Start Date</span> <span class="datavalue">{{ infailed_details.start_date }}</span>
+		  </a>
+		  <a class="item" ng-if="infailed_details.end_date">
+			<span class="datatitle">End Date</span> <span class="datavalue">{{ infailed_details.end_date }}</span>
+		  </a>
+		  <a class="item" ng-if="infailed_details.points">
+			<span class="datatitle">Points</span> <span class="datavalue">{{ infailed_details.points }}</span>
+		  </a>
+		  <a class="item" ng-if="infailed_details.full_description">
+			<span class="datatitle">Description</span> <span class="datavalue" style="text-align: left;white-space: normal;width: 100%;margin-top: 5px;" ng-bind-html="infailed_details.full_description"></span>
+		  </a>
+		</div>
+		<div class="row">
+		  <div class="col col-50 col-offset-25 text-center">
+			<a ng-if="infailed_details.Cumplimiento > 0" ui-sref="app.friend-challenges~daily-entry({ record_id:infailed_details.idRetoAceptado })" class="button button-custom button-block">
+				See
+			</a>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="c100 p{{ infailed_details.Cumplimiento }} big red div-center">
+			 <span>{{ infailed_details.Cumplimiento }}%</span>                    
+			 <div class="slice">
+				<div class="bar"></div>
+				<div class="fill"></div>
+			 </div>
+		  </div>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:200px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>	
+</ion-view>

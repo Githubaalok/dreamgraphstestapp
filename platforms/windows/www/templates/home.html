@@ -1,0 +1,134 @@
+﻿<ion-view view-title="">
+	<ion-content class="back-img">
+		<div class="row overlay-light">
+			<div class="col col-100 text-center">
+				<img src="img/siteimgs/logo_dgphs.png" style="width:50%" />
+				<p class="text-white">CHALLENGES THAT TRANSFORM LIVES, REAL FRIENDS AND COMPENSATION WONDERFUL</p>
+			</div>
+		</div>
+		<div class="row overlay-dark">
+			<div class="col col-100 text-center">
+				<h2 class="text-white"><b>YOU ACCEPT</b></h2>
+				<p class="text-white">Responsibility to be better every day</p>
+				<div class="col col-50 col-offset-25 accept-box"> {{ complete_challenge }}	</div>
+				<p class="text-white">Achievements</p>
+			</div>
+		</div>
+		<div class="text-center bg-white">
+			<h2><span class="text-primary"><b>WHY</span> DREAMGRAPHS?</b></h2>
+			<p>
+				Because we want and need to improve in some aspect of our lives: health, personal finance at the intellectual level, in our personal relationships or professional level and often do not know where to start and if we take the first step does not know how to stay. Because we seek recognition and compensation for efforts but we do not always get. Because if we do not achieve our goals, we create a sense of frustration that is slowly eating our spirit, and that we should not allow
+			</p>
+		</div>
+		<div>
+			<div class="row overlay-light">
+				<div class="col col-100 text-center">
+					<div class="text-center workmap-box"><i class="ion-thumbsup"></i></div>
+					<h2 class="text-white">TO CHOOSE</h2>
+					<p class="text-white">A challenge for you or to obserquiarlo to a friend.</p>
+				</div>
+			</div>
+			<div class="row overlay-light">
+				<div class="col col-100 text-center">
+					<div class="text-center workmap-box"><i class="ion-android-checkbox"></i></div>
+					<h2 class="text-white">ACT</h2>
+					<p class="text-white">Consistent with the deep desire to be better every day.</p>
+				</div>
+			</div>
+			<div class="row overlay-light">
+				<div class="col col-100 text-center">
+					<div class="text-center workmap-box"><i class="ion-android-share-alt"></i></div>
+					<h2 class="text-white">SHARE</h2>
+					<p class="text-white">Your progress and achievements with friends, show your experience and feelings.</p>
+				</div>
+			</div>
+			<div class="row overlay-light">
+				<div class="col col-100 text-center">
+					<div class="text-center workmap-box"><i class="ion-social-dropbox"></i></div>
+					<h2 class="text-white">TO RECEIVE</h2>
+					<p class="text-white">Incentives and support to transform your life and be happier.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row overlay-dark">
+			<div class="col col-100 text-center" style="margin:30px 0px 30px 0px">
+				<h3 class="text-white">dreamgraphs share <span class="text-primary">with your friends!</span></h3>
+				<form name="shareForm" ng-submit="submitshareForm(shareForm);" novalidate>
+					<div class="list list-custom home-input">
+					  <div class="item item-input-inset">
+						<!-- Input -->
+							<label class="item-input-wrapper">
+							  <input style="width:100%" type="email" placeholder="Email" ng-model="formData.email" name="email" ng-maxlength="30" required>
+							</label>
+						<!--/ Input -->
+						<button class="button button-small button-outline button-primary">
+						  Submit
+						</button>
+					  </div>
+					  <p class="error-p" ng-show="shareForm.email.$error.required && (!shareForm.email.$pristine || shareForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="shareForm.email.$error.maxlength && (!shareForm.email.$pristine || shareForm.$submitted)">Cannot Longer Than 30 Characters</p>
+					  <p class="error-p" ng-show="shareForm.email.$invalid && (!shareForm.email.$pristine || shareForm.$submitted) && !shareForm.email.$error.required">Email Is Not Valid</p>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row overlay-light">
+			<div class="col col-100 text-center">
+				<h2 class="text-primary"><b>BENEFITS</b></h2>
+			</div>
+		</div>
+		<div class="row overlay-light">
+			<div class="col col-100 text-center text-white">
+				<div class="icon-box-high">
+					<i class="ion-happy" style="font-size:50px;"></i>
+					<h2 class="text-white">HAPPINESS</h2>
+					<p class="text-white">When you give and receive, participate in the dynamic exchange of life that will generate inner peace.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row overlay-light">
+			<div class="col col-100 text-center text-white">
+				<div class="icon-box-high">
+					<i class="ion-android-checkbox" style="font-size:50px;"></i>
+					<h2 class="text-white">NEW HABITS</h2>
+					<p class="text-white">Do repetitive tasks that promote positive aspects in your life, strengthen the discipline you need to transform your life.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row overlay-light">
+			<div class="col col-100 text-center text-white">
+				<div class="icon-box-high">
+					<i class="ion-cash" style="font-size:50px;"></i>
+					<h2 class="text-white">COMPENSATIONS</h2>
+					<p class="text-white">The redemption of the points donated by friends is a benefit that can make tangible.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row overlay-light">
+			<div class="col col-100 text-center text-white">
+				<h2 class="text-white">I'M NOT SAYING IT WILL BE EASY <span class="text-primary">BUT CERTAINLY</span></h2>
+				<p class="text-white">will be worth.</p>
+			</div>
+		</div>
+		<div class="overlay-dark text-center testimonial">	
+			<h2 class="text-white"><b>TESTIMONIALS</b></h2>
+			<ion-slide-box on-slide-changed="slideChanged(index)" auto-play="true" does-continue="true" show-pager="false">
+			  <ion-slide ng-repeat="testimonial in testimonials">
+				<div class="row">
+					<div class="col col-100">
+						<img src="{{ testimonial.featured_img }}" />
+						<h3 class="text-white">- {{ testimonial.title }} -</h3>
+						<i class="icon ion-quote"></i>
+						<p class="text-white">{{ testimonial.description }}</p>
+					</div>
+				</div>
+			  </ion-slide>
+			</ion-slide-box>
+		</div>
+		<div class="row">
+			<div class="col col-100 text-center" style="margin-bottom:25px;">
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

@@ -1,0 +1,34 @@
+﻿<ion-view view-title="Retograma / Progress">
+	<ion-content>
+		<div class="shadow-custom">
+          <img ng-if="challenge_details.challenge_image_url" src="{{ challenge_details.challenge_image_url }}" style="width:100%;" alt="challengeImg">
+		  <div class="ion-dom">
+			<p ng-if="challenge_details.challenge_name" class="challenge_heading text-center">{{ challenge_details.challenge_name }}</p>
+		  </div>
+		</div>
+		<h4 class="col text-center text-white">Challenge Day</h4>
+		<div class="row cb-no" ng-repeat="tickbox in tickboxes track by $index" ng-if="$index % 7 == 0">
+		   <div class="col col-10" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3, $index + 4, $index + 5, $index + 6, $index + 7, $index + 8, $index + 9]" ng-if="tickboxes[i] != null">
+				<ion-checkbox style="border:none;" class="checkbox-custom-progress" ng-model="boxcheck[i]" name="boxcheck[i]" value="tickboxes[i].value" ng-click="tickboxes[i].status == 'active' ? retoChanged(tickboxes[i].value,i) : ''" ng-checked="tickboxes[i].check == 'yes'" ng-disabled="tickboxes[i].status == 'deactive'" ></ion-checkbox>
+		   </div>
+		</div>
+		<div class="col com">
+			<h4 class="col text-center text-white">Completed</h4>
+		</div>
+		<div class="row">
+			<div class="c100 p{{ percentage }} big green" style="margin:auto;">
+				<span>{{ percentage }}%</span>
+				<div class="slice">
+					<div class="bar"></div>
+					<div class="fill"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:60px;">
+			
+			</div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

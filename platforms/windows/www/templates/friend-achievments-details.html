@@ -1,0 +1,51 @@
+﻿<ion-view view-title="Challenges Friends / Achievements / Details">
+    <ion-content>
+        <div class="shadow-custom">
+          <img ng-if="achievments_details.image" src="{{ achievments_details.image }}" style="width:100%" alt="challengeImg">
+		  <div class="ion-dom">
+			<p ng-if="achievments_details.challenge_title" class="challenge_heading text-center">{{ achievments_details.challenge_title }}</p>
+		  </div>
+		</div>
+		<div class="list list-custom">
+		  <a class="item" ng-if="achievments_details.first_name">
+			<span class="datatitle">Challenging</span> <span class="datavalue">{{ achievments_details.first_name }} {{ achievments_details.last_name }}</span>
+		  </a>
+		  <a class="item" ng-if="achievments_details.category">
+			<span class="datatitle">Category</span> <span class="datavalue">{{ achievments_details.category }}</span>
+		  </a>
+		  <a class="item" ng-if="achievments_details.start_date">
+			<span class="datatitle">Start Date</span> <span class="datavalue">{{ achievments_details.start_date }}</span>
+		  </a>
+		  <a class="item" ng-if="achievments_details.end_date">
+			<span class="datatitle">End Date</span> <span class="datavalue">{{ achievments_details.end_date }}</span>
+		  </a>
+		  <a class="item" ng-if="achievments_details.points">
+			<span class="datatitle">Points</span> <span class="datavalue">{{ achievments_details.points }}</span>
+		  </a>
+		  <a class="item" ng-if="achievments_details.full_description">
+			<span class="datatitle">Description</span> <span class="datavalue" style="text-align: left;white-space: normal;width: 100%;margin-top: 5px;" ng-bind-html="achievments_details.full_description"></span>
+		  </a>
+		  <a class="item" ng-if="achievments_details.status == '4' || achievments_details.status == '3'">
+			<span class="datatitle">Status</span> 
+			<span class="datavalue" ng-if="achievments_details.status == '4'">Paid</span>
+			<span class="datavalue" ng-if="achievments_details.status == '3'">Amount Collected</span>
+		  </a>
+		</div>
+		<div class="row">
+		  <div class="col text-center" ng-if="achievments_details.status == '0'">
+			<a href="" ng-click="GotoLink()" class="button button-custom button-block">
+				Pay Now
+			</a>
+		  </div>
+		  <div class="col text-center">
+			<a ng-click="GotoPage('friend-achievements')" class="button button-custom button-block">
+				Cancel
+			</a>
+		  </div>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:50px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>	
+</ion-view>

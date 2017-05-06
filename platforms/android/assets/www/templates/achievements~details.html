@@ -1,0 +1,60 @@
+<ion-view view-title="My Challenge / Achievements / Details">
+    <ion-content>
+		<div class="row">
+			<div class="col col-100 text-center">
+				<div class="list list-custom">
+				  <a class="item">
+					<span class="datatitle">Title</span> <span class="datavalue">{{ myAchievementDetails.challenge_name }}</span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">Category</span> <span class="datavalue">{{ myAchievementDetails.category_name }}</span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">Start Date </span> <span class="datavalue">{{ myAchievementDetails.start_date }}</span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">End Date</span> <span class="datavalue">{{ myAchievementDetails.end_date }}</span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">Challenging</span> <span class="datavalue">{{ myAchievementDetails.challaging_user }}</span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">Points</span> <span class="datavalue">{{ myAchievementDetails.points }}</span>
+				  </a>
+				  <a class="item" ng-if="myAchievementDetails.description">
+					<span class="datatitle">Description</span> <span class="datavalue" style="text-align: left;white-space: normal;width: 100%;margin-top: 5px;" ng-bind-html="myAchievementDetails.description"></span>
+				  </a>
+				  <a class="item">
+					<span class="datatitle">Advance</span> <span class="datavalue">100%</span>
+				  </a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+		  <div class="col col-50 text-center">
+			<a ui-sref="app.achievements~daily-entry({record_id:myAchievementDetails.id})" class="button button-custom button-block">
+				See
+			</a>
+		  </div>
+		  <div class="col col-50 text-center">
+			<button ng-click="requestSendCancel(myAchievementDetails.redem_requrest,myAchievementDetails.id);" class="button button-custom button-block">
+				<span ng-if="myAchievementDetails.redem_requrest == 0">Request Friend</span>
+				<span ng-if="myAchievementDetails.redem_requrest == 1">Cancel Request</span>
+			</button>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="c100 p100 big green div-center">
+			 <span>100%</span>                    
+			 <div class="slice">
+				<div class="bar"></div>
+				<div class="fill"></div>
+			 </div>
+		  </div>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:200px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>

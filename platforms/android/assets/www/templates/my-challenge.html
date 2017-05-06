@@ -1,0 +1,50 @@
+<ion-view view-title="My challenge">
+	<ion-content>
+		<div class="list custom-challenge">			
+		  <a href="" ng-click="GotoPage('my-challenges~without-accepted');">
+			<div class="item item-button-right">
+				Received
+				<button class="button button-dark">
+				  {{ myChallenges.received }}
+				</button>
+			</div>
+		  </a>
+		  <a href="" ng-click="GotoPage('my-in-progress');">
+			<div class="item item-button-right">
+				In Progress
+				<button class="button button-energized">
+				  {{ myChallenges.in_progress }}
+				</button>
+			</div>
+		  </a>
+		  <a href="" ng-click="GotoPage('my-in-failed');">
+			<div class="item item-button-right">
+				Failed
+				<button class="button button-assertive">
+				  {{ myChallenges.failed }}
+				</button>
+			</div>
+		  </a>
+		  <a href="" ng-click="GotoPage('my-achievements');">
+			<div class="item item-button-right">
+				Achievement
+				<button class="button button-balanced">
+				  {{ myChallenges.achievement }}
+				</button>
+			</div>
+		  </a>
+		  <a href="" ng-click="GotoPage('send-challenges');">
+			<div class="item item-button-right">
+				Sent
+				<button class="button button-calm">
+				  {{ myChallenges.Send }}
+				</button>
+			</div>
+		  </a>
+		</div>
+		<div class="row">
+			<div class="col col-100" style="margin-bottom:30px;"></div>
+		</div>
+    </ion-content>
+	<div ng-include src="'templates/bottom-tabs.html'"></div>
+</ion-view>
