@@ -1185,7 +1185,7 @@ angular.module('starter.controllers', [])
 	}
 })
 /** Home Controller **/
-.controller('homeCtrl', function($http,$scope,$state,$ionicHistory,$ionicSlideBoxDelegate,$ionicPopup,$ionicLoading,$timeout,$rootScope,$ionicSideMenuDelegate) {
+.controller('homeCtrl', function($http,$scope,$state,$ionicHistory,$ionicSlideBoxDelegate,$ionicPopup,$ionicLoading,$timeout,$rootScope,$ionicSideMenuDelegate,$cordovaSocialSharing) {
 	$ionicSideMenuDelegate.canDragContent(false);
 	/** Check Login **/
 	$scope.$on('$ionicView.enter', function() {
@@ -1259,6 +1259,14 @@ angular.module('starter.controllers', [])
 				$ionicLoading.hide();
 			});
 		}
+	}
+	$scope.submitsocialshare = function(message,image,link) {
+		console.log('clicked');
+		$cordovaSocialSharing.shareViaFacebook(message, image, link).then(function(result) {
+		  // Success!
+		}, function(err) {
+		  // An error occurred. Show a message to the user
+		}); 
 	}
 })
 /** Challenges Controller **/
