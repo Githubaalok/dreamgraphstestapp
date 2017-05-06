@@ -1260,9 +1260,9 @@ angular.module('starter.controllers', [])
 			});
 		}
 	}
-	$scope.submitsocialshare = function(message,image,link) {
+	$scope.submitsocialshare = function(message,image1,link1) {
 		console.log('clicked');
-		$cordovaSocialSharing.shareViaFacebook(message, image, link).then(function(result) {
+		$cordovaSocialSharing.shareViaFacebookWithPasteMessageHint(message, image1, link1).then(function(result) {
 		  // Success!
 		}, function(err) {
 		  // An error occurred. Show a message to the user
