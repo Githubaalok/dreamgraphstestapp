@@ -31,6 +31,20 @@
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
+	<!-- for iOS -->
+<feature name="SocialSharing">
+<param name="ios-package" value="SocialSharing" />
+</feature>
+
+<!-- for Android (you will find one in res/xml) -->
+<feature name="SocialSharing">
+<param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+</feature>
+
+<!-- for Windows Phone -->
+<feature name="SocialSharing">
+<param name="wp-package" value="SocialSharing"/>
+</feature>
     <platform name="android">
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
@@ -82,7 +96,6 @@
     <plugin name="cordova-plugin-actionsheet" spec="~2.3.1" />
     <plugin name="cordova-plugin-dialogs" spec="~1.3.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.5.0" />
-	<plugin name="cordova-plugin-x-socialsharing"/>
     <plugin name="cordova-plugin-media" spec="~2.4.0">
         <variable name="MICROPHONE_USAGE_DESCRIPTION" value=" " />
     </plugin>
