@@ -1264,8 +1264,30 @@ angular.module('starter.controllers', [])
 		console.log('clicked');
 		$cordovaSocialSharing.shareViaWhatsApp(message, image, link).then(function(result) {
 			// Success!
+			$ionicPopup.show({
+			  template: '',
+			  title: result,
+			  scope: $scope,
+			  buttons: [
+				{ 
+				  text: 'Ok',
+				  type: 'button-custom'
+				},
+			  ]
+			});
 		}, function(err) {
 			// An error occurred. Show a message to the user
+			$ionicPopup.show({
+			  template: '',
+			  title: err,
+			  scope: $scope,
+			  buttons: [
+				{ 
+				  text: 'Ok',
+				  type: 'button-custom'
+				},
+			  ]
+			});
 		}); 
 	}
 })
