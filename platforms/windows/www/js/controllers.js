@@ -1261,64 +1261,25 @@ angular.module('starter.controllers', [])
 		}
 	}
 	$scope.submitsocialsharew = function(message,img,link) {
-		console.log('clicked');
 		window.plugins.shareViaWhatsApp(message, img, link).then(function(result) {
-			// Success!
-			$ionicPopup.show({
-			  template: '',
-			  title: result,
-			  scope: $scope,
-			  buttons: [
-				{ 
-				  text: 'Ok',
-				  type: 'button-custom'
-				},
-			  ]
-			});
+		  // Success!
 		}, function(err) {
-			// An error occurred. Show a message to the user
-			$ionicPopup.show({
-			  template: '',
-			  title: err,
-			  scope: $scope,
-			  buttons: [
-				{ 
-				  text: 'Ok',
-				  type: 'button-custom'
-				},
-			  ]
-			});
-		}); 
+		  // An error occurred. Show a message to the user
+		});
 	}
 	$scope.submitsocialsharef = function(message,img,link) {
-		console.log('clicked');
 		window.plugins.shareViaFacebook(message, img, link).then(function(result) {
-			// Success!
-			$ionicPopup.show({
-			  template: '',
-			  title: result,
-			  scope: $scope,
-			  buttons: [
-				{ 
-				  text: 'Ok',
-				  type: 'button-custom'
-				},
-			  ]
-			});
+		  // Success!
 		}, function(err) {
-			// An error occurred. Show a message to the user
-			$ionicPopup.show({
-			  template: '',
-			  title: err,
-			  scope: $scope,
-			  buttons: [
-				{ 
-				  text: 'Ok',
-				  type: 'button-custom'
-				},
-			  ]
-			});
-		}); 
+		  // An error occurred. Show a message to the user
+		});
+	}
+	$scope.submitsocialsharef2 = function(message,img,link) {
+		window.plugins.shareViaFacebookWithPasteMessageHint(message, img, link).then(function(result) {
+		  // Success!
+		}, function(err) {
+		  // An error occurred. Show a message to the user
+		});
 	}
 })
 /** Challenges Controller **/

@@ -4,10 +4,12 @@
 			<div class="col col-100 text-center">
 				<img src="img/siteimgs/logo_dgphs.png" style="width:50%" />
 				<p class="text-white">CHALLENGES THAT TRANSFORM LIVES, REAL FRIENDS AND COMPENSATION WONDERFUL</p>
-				<button onclick="window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('Message via Facebook', 'https://www.dreamgraphs.com/admin/img/retos/158815731135752466_ml_escalas.png', 'https://www.dreamgraphs.com/', function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via Facebook (with errcallback)</button>
-				<button onclick="window.plugins.socialsharing.canShareVia('whatsapp', 'msg', null, null, null, function(e){alert(e)}, function(e){alert(e)})">is WhatsApp available?</button>
-				<button ng-click="submitsocialsharew('testing...','https://www.dreamgraphs.com/admin/img/retos/158815731135752466_ml_escalas.png','https://www.dreamgraphs.com/');">share</button>
-				<button ng-click="submitsocialsharef('testing...','https://www.dreamgraphs.com/admin/img/retos/158815731135752466_ml_escalas.png','https://www.dreamgraphs.com/');">share</button>
+				<button onclick="window.plugins.socialsharing.shareViaFacebook('Message via Facebook', 'https://www.dreamgraphs.com/admin/img/retos/158815731135752466_ml_escalas.png', 'https://www.dreamgraphs.com/', function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via Facebook (with errcallback)</button>
+				<button onclick="window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('Message via Facebook', 'https://www.dreamgraphs.com/admin/img/retos/158815731135752466_ml_escalas.png', 'https://www.dreamgraphs.com/', 'Paste it dude!', function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via Facebook (with errcallback)pastemsg</button>
+				<button onclick="window.plugins.socialsharing.canShareVia('facebook', 'msg', null, null, null, function(e){alert(e)}, function(e){alert(e)})">is facebook available?</button>
+				<button ng-click="submitsocialsharew('testing...','https://www.dreamgraphs.com/admin/img/retos/158815731135752466_ml_escalas.png','https://www.dreamgraphs.com/');">sharew</button>
+				<button ng-click="submitsocialsharef('testing...','https://www.dreamgraphs.com/admin/img/retos/158815731135752466_ml_escalas.png','https://www.dreamgraphs.com/');">sharef</button>
+				<button ng-click="submitsocialsharef2('testing...','https://www.dreamgraphs.com/admin/img/retos/158815731135752466_ml_escalas.png','https://www.dreamgraphs.com/');">sharef2</button>
 			</div>
 		</div>
 		<div class="row overlay-dark">
