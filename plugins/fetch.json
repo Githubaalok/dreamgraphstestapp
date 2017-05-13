@@ -154,7 +154,7 @@
             "type": "registry",
             "id": "es6-promise-plugin"
         },
-        "is_top_level": false,
+        "is_top_level": true,
         "variables": {}
     }
 }
