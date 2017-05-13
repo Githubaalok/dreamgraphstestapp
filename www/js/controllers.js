@@ -1185,7 +1185,7 @@ angular.module('starter.controllers', [])
 	}
 })
 /** Home Controller **/
-.controller('homeCtrl', function($http,$scope,$state,$ionicHistory,$ionicSlideBoxDelegate,$ionicPopup,$ionicLoading,$timeout,$rootScope,$ionicSideMenuDelegate,$cordovaSocialSharing) {
+.controller('homeCtrl', function($http,$scope,$state,$ionicHistory,$ionicSlideBoxDelegate,$ionicPopup,$ionicLoading,$timeout,$rootScope,$ionicSideMenuDelegate) {
 	$ionicSideMenuDelegate.canDragContent(false);
 	/** Check Login **/
 	$scope.$on('$ionicView.enter', function() {
@@ -1260,9 +1260,39 @@ angular.module('starter.controllers', [])
 			});
 		}
 	}
-	$scope.submitsocialshare = function(message,image,link) {
+	$scope.submitsocialsharew = function(message,img,link) {
 		console.log('clicked');
-		$cordovaSocialSharing.shareViaWhatsApp(message, image, link).then(function(result) {
+		window.plugins.shareViaWhatsApp(message, img, link).then(function(result) {
+			// Success!
+			$ionicPopup.show({
+			  template: '',
+			  title: result,
+			  scope: $scope,
+			  buttons: [
+				{ 
+				  text: 'Ok',
+				  type: 'button-custom'
+				},
+			  ]
+			});
+		}, function(err) {
+			// An error occurred. Show a message to the user
+			$ionicPopup.show({
+			  template: '',
+			  title: err,
+			  scope: $scope,
+			  buttons: [
+				{ 
+				  text: 'Ok',
+				  type: 'button-custom'
+				},
+			  ]
+			});
+		}); 
+	}
+	$scope.submitsocialsharef = function(message,img,link) {
+		console.log('clicked');
+		window.plugins.shareViaFacebook(message, img, link).then(function(result) {
 			// Success!
 			$ionicPopup.show({
 			  template: '',
