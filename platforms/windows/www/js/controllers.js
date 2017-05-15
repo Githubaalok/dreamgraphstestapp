@@ -1260,27 +1260,6 @@ angular.module('starter.controllers', [])
 			});
 		}
 	}
-	$scope.submitsocialsharew = function(message,img,link) {
-		window.plugins.shareViaWhatsApp(message, img, link).then(function(result) {
-		  // Success!
-		}, function(err) {
-		  // An error occurred. Show a message to the user
-		});
-	}
-	$scope.submitsocialsharef = function(message,img,link) {
-		window.plugins.shareViaFacebook(message, img, link).then(function(result) {
-		  // Success!
-		}, function(err) {
-		  // An error occurred. Show a message to the user
-		});
-	}
-	$scope.submitsocialsharef2 = function(message,img,link) {
-		window.plugins.shareViaFacebookWithPasteMessageHint(message, img, link).then(function(result) {
-		  // Success!
-		}, function(err) {
-		  // An error occurred. Show a message to the user
-		});
-	}
 })
 /** Challenges Controller **/
 .controller('challengesCtrl', function($http,$scope,$state,$ionicLoading) {
